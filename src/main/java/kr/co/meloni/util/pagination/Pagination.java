@@ -9,6 +9,9 @@ public class Pagination {
             long rowSize,
             long pageSize,
             long totalCount) {
+        page = page > 0 ? page : 1;
+        rowSize = rowSize > 0 ? rowSize : 10;
+        pageSize = pageSize > 0 ? pageSize : 10;
         long pageCount = (totalCount % rowSize) == 0 ? (totalCount / rowSize) : (totalCount / rowSize) + 1;
         long rowStart = page > 0 ? (page * rowSize) - rowSize + 1 : 1;
         long rowEnd = page > 0 ? (page * rowSize) : rowSize;
