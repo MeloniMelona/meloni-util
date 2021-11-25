@@ -14,10 +14,12 @@ public class Pagination {
         pageSize = pageSize > 0 ? pageSize : 10;
         long pageCount = (totalCount % rowSize) == 0 ? (totalCount / rowSize) : (totalCount / rowSize) + 1;
         long rowStart = page > 0 ? (page * rowSize) - rowSize + 1 : 1;
-        long rowEnd = page > 0 ? (page * rowSize) : rowSize;
+        long rowEnd = page > 0 ? (page * rowSize) : rowSize; rowEnd = totalCount > rowEnd ? rowEnd : totalCount;
         long pagePosition = (page % pageSize) == 0 ? (page / pageSize) : (page / pageSize) + 1;
         long pageStart = (pagePosition * pageSize) + 1 - pageSize;
-        long pageEnd = (pagePosition * pageSize);
+        long pageEnd = (pagePosition * pageSize); pageEnd = pageCount > pageEnd ? pageEnd : pageCount;
+        boolean hasPrevious = pagePosition > 1;
+        boolean hasNext = pagePosition < (pageCount % pageSize == 0 ? (pageCount / pageSize) : (pageCount / pageSize) + 1);
         PageObject pageObject = new PageObject();
         pageObject.setPage(page);
         pageObject.setRowSize(rowSize);
@@ -29,6 +31,8 @@ public class Pagination {
         pageObject.setPagePosition(pagePosition);
         pageObject.setPageStart(pageStart);
         pageObject.setPageEnd(pageEnd);
+        pageObject.setHasPrevious(hasPrevious);
+        pageObject.setHasNext(hasNext);
         return pageObject;
     }
 
@@ -55,6 +59,10 @@ public class Pagination {
         private long pageStart;
 
         private long pageEnd;
+
+        private boolean hasPrevious;
+
+        private boolean hasNext;
 
         public long getPage() {
             return page;
@@ -134,6 +142,22 @@ public class Pagination {
 
         private void setPageEnd(long pageEnd) {
             this.pageEnd = pageEnd;
+        }
+
+        public boolean getHasPrevious() {
+            return hasPrevious;
+        }
+
+        public void setHasPrevious(boolean hasPrevious) {
+            this.hasPrevious = hasPrevious;
+        }
+
+        public boolean getHasNext() {
+            return hasNext;
+        }
+
+        public void setHasNext(boolean hasNext) {
+            this.hasNext = hasNext;
         }
 
     }
