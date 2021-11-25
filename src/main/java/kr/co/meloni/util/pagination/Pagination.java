@@ -12,7 +12,7 @@ public class Pagination {
         long pageCount = (totalCount % rowSize) == 0 ? (totalCount / rowSize) : (totalCount / rowSize) + 1;
         long rowStart = page > 0 ? (page * rowSize) - rowSize + 1 : 1;
         long rowEnd = page > 0 ? (page * rowSize) : rowSize;
-        long pagePosition = (page > pageSize) && (page % pageSize) == 0 ? (page / pageSize) : (page / pageSize) + 1;
+        long pagePosition = (page % pageSize) == 0 ? (page / pageSize) : (page / pageSize) + 1;
         long pageStart = (pagePosition * pageSize) + 1 - pageSize;
         long pageEnd = (pagePosition * pageSize);
         PageObject pageObject = new PageObject();
