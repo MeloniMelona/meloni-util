@@ -22,6 +22,8 @@ public class Main {
         sb.append("pagePosition : " + pageObject.getPagePosition() + "\n");
         sb.append("pageStart : " + pageObject.getPageStart() + "\n");
         sb.append("pageEnd : " + pageObject.getPageEnd() + "\n");
+        sb.append("hasPrevious : " + pageObject.getHasPrevious() + "\n");
+        sb.append("hasNext : " + pageObject.getHasNext() + "\n");
         System.out.println(sb.toString());
     }
 
