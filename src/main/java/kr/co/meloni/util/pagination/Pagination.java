@@ -148,7 +148,7 @@ public class Pagination {
             return hasPrevious;
         }
 
-        public void setHasPrevious(boolean hasPrevious) {
+        private void setHasPrevious(boolean hasPrevious) {
             this.hasPrevious = hasPrevious;
         }
 
@@ -156,7 +156,7 @@ public class Pagination {
             return hasNext;
         }
 
-        public void setHasNext(boolean hasNext) {
+        private void setHasNext(boolean hasNext) {
             this.hasNext = hasNext;
         }
 
