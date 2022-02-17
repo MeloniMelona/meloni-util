@@ -1,5 +1,7 @@
 package kr.co.meloni.util.pagination;
 
+import java.util.List;
+
 public class Pagination {
 
     private Pagination() {}
@@ -158,6 +160,27 @@ public class Pagination {
 
         private void setHasNext(boolean hasNext) {
             this.hasNext = hasNext;
+        }
+
+    }
+
+    public static class ItemsWithPageObject<T> {
+
+        private List<T> items;
+
+        private PageObject pageObject;
+
+        public ItemsWithPageObject(List<T> items, PageObject pageObject) {
+            this.items = items;
+            this.pageObject = pageObject;
+        }
+
+        public List<T> getItems() {
+            return items;
+        }
+
+        public PageObject getPageObject() {
+            return pageObject;
         }
 
     }
